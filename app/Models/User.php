@@ -17,8 +17,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'first_name', 'last_name', 'age',
+        'city', 'phone', 'message', 'gender',
     ];
+
+    public function reservation()
+    {
+        return $this->hasMany(Investment::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
