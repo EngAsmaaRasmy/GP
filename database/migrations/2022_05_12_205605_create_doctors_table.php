@@ -18,6 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->string("name");
             $table->integer("category_id");
             $table->string("address");
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }
