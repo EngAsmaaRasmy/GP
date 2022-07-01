@@ -15,8 +15,13 @@ class CreateInvestmentsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->date('appointment_date');
+            $table->integer("category_id");
             $table->integer("doctor_id");
-            $table->integer("user_id");
+            $table->text("message")->nullable();
             $table->timestamps();
         });
     }

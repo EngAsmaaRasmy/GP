@@ -16,8 +16,11 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string('email')->unique();
             $table->integer("category_id");
             $table->string("address");
+            $table->enum("gender", ["male", "female"]);
+            $table->string('password');
             $table->string('token')->nullable();
             $table->timestamps();
         });
