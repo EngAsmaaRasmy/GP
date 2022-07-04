@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-    protected $fillable = ["name", "category_id", "address"];
+    protected $fillable = ["name", "email", "category_id", "address", "gender", "image", "password", "token"];
+
+    protected $hidden = [
+        'password', 'token'
+    ];
 
     public function category()
     {

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MakeAnAppointmentRequest;
+use App\Models\Category;
+use App\Models\Doctor;
+use App\Models\Investment;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +17,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        $departments  = Category::get();
+        $departmentDoctors = Doctor::get();
+        return view('home', compact('departments', 'departmentDoctors'));
+    }
+
+    public function fetchDoctors(Request $request)
+    {
+        $data['doctors']    = Doctor::where('category_id', $request->category_id)->get();
+        return response()->json($data);
     }
 
     /**
@@ -32,9 +44,23 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MakeAnAppointmentRequest $request)
     {
-        //
+        try {
+            $appointment = Investment::create([
+                "name" => $request->name,
+                "phone" => $request->phone,
+                "email" => $request->email,
+                "category_id" => $request->category_id,
+                "doctor_id" => $request->doctor_id,
+                "message" => $request->message,
+            ]);
+            session()->flash('add');
+            return redirect()->back();
+        } catch (\Throwable $e) {
+            session()->flash($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
