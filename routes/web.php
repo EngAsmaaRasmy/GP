@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::post("make-an-appointment", [HomeController::class, "store"])->name("makeAnAppointment");
+Route::post('/fetch-doctors', [HomeController::class, 'fetchDoctors']);

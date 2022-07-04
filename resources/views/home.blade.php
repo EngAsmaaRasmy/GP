@@ -123,42 +123,23 @@
 
         <div class="row no-gutters">
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-6 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fas fa-user-md"></i>
-              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $departmentDoctors->count() }}" data-purecounter-duration="1" class="purecounter"></span>
 
               <p><strong>Doctors</strong> consequuntur quae qui deca rode</p>
-              <a href="#">Find out more &raquo;</a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-6 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="far fa-hospital"></i>
-              <span data-purecounter-start="0" data-purecounter-end="26" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $departments->count() }}" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Departments</strong> adipisci atque cum quia aut numquam delectus</p>
-              <a href="#">Find out more &raquo;</a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="fas fa-flask"></i>
-              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Research Lab</strong> aut commodi quaerat. Aliquam ratione</p>
-              <a href="#">Find out more &raquo;</a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="fas fa-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Awards</strong> rerum asperiores dolor molestiae doloribu</p>
-              <a href="#">Find out more &raquo;</a>
-            </div>
-          </div>
 
         </div>
 
@@ -179,7 +160,8 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+        <form action="{{ route('makeAnAppointment') }}" method="post" autocomplete="off"
+        enctype="multipart/form-data" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
           <div class="row">
             <div class="col-md-4 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -196,19 +178,16 @@
               <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
             </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="department" id="department" class="form-select">
+              <select name="category_id" id="department" class="form-select">
                 <option value="">Select Department</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
+                @foreach ($departments as $department)
+                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                @endforeach
               </select>
             </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
+              <select name="doctor_id" id="doctor" class="form-select">
                 <option value="">Select Doctor</option>
-                <option value="Doctor 1">Doctor 1</option>
-                <option value="Doctor 2">Doctor 2</option>
-                <option value="Doctor 3">Doctor 3</option>
               </select>
             </div>
           </div>
@@ -239,40 +218,26 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-4 mb-5 mb-lg-0">
             <ul class="nav nav-tabs flex-column">
+              @foreach ($departments as $count => $department)
               <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                  <h4>Cardiology</h4>
-                  <p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
+                <a @if($count == 0 ) class="nav-link active show" @endif  data-bs-toggle="tab" data-bs-target="#tab-{{ $department->id }}">
+                  <h4>{{ $department->name }}</h4>
+                  <p>{{ $department->desc }}</p>
                 </a>
               </li>
+              @endforeach
             </ul>
           </div>
           <div class="col-lg-8">
             <div class="tab-content">
-              <div class="tab-pane active show" id="tab-1">
-                <h3>Cardiology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+              @foreach ($departments as $count => $department)
+              <div  @if($count == 0) class="tab-pane active show" @else class="tab-pane" @endif  id="tab-{{ $department->id }}">
+                <h3>{{ $department->name }}</h3>
+                <p class="fst-italic">{{ $department->desc }}</p>
+                <img src="{{ $department->image }}" alt="" class="img-fluid">
+                <p>{{ $department->description }}</p>
               </div>
-              <div class="tab-pane" id="tab-2">
-                <h3>Neurology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <h3>Hepatology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <h3>Pediatrics</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -291,78 +256,19 @@
         </div>
 
         <div class="row">
-
+          @foreach ($departmentDoctors as $doctor)
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+                <img src="{{ $doctor->image }}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
+                <h4>{{ $doctor->name }}</h4>
+                <span>{{ $doctor->category->name }}</span>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-              </div>
-            </div>
-          </div>
+          @endforeach
 
         </div>
 
@@ -449,7 +355,33 @@
  
   </main><!-- End #main -->
   @endsection
-
+@section('js')
+<script>
+  $(document).ready(function () {
+            $('#department').on('change', function () {
+                var department = this.value;
+                $("#doctor").html('');
+                $.ajax({
+                    url: "{{url('/fetch-doctors')}}",
+                    type: "POST",
+                    data: {
+                        category_id: department,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                      $('#doctor').html('<option value="">Select Doctor</option>');
+                        $.each(result.doctors, function (key, value) {
+                            $("#doctor").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+  });
+</script>
+  
+@endsection
 
   
 
