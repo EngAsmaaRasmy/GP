@@ -17,7 +17,7 @@ class Doctor extends Model
 
     public function schaduale()
     {
-        return $this->hasMany(Doctor::class);
+        return $this->hasMany(schaduale::class);
     }
 
     public function reservation()
