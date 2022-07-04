@@ -9,16 +9,16 @@ class Investment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["doctor_id", "user_id"];
+    protected $fillable = ["name", "email", "phone", "appointment_date", "category_id", "doctor_id", "message"];
 
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
     }
 
-    public function user()
+    public function category()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Category::class);
     }
 
 }

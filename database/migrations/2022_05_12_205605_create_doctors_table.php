@@ -20,6 +20,7 @@ class CreateDoctorsTable extends Migration
             $table->integer("category_id");
             $table->string("address");
             $table->enum("gender", ["male", "female"]);
+            $table->string('image');
             $table->string('password');
             $table->string('token')->nullable();
             $table->timestamps();
