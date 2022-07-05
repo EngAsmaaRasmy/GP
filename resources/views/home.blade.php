@@ -2,12 +2,12 @@
 @section('content')
   <!-- ======= landing Section ======= -->
   <section id="hero">
-    
 
 
-      
 
-      
+
+
+
 
         <!-- Slide 3 -->
         <div class="carousel-item" >
@@ -18,11 +18,11 @@
           </div>
         </div>
 
-      
 
-     
 
-    
+
+
+
   </section><!-- End Hero -->
 
   <main id="main">
@@ -67,7 +67,7 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
               <div class="icon"><i class="fas fa-dna"></i></div>
               <h4 class="title"><a href="">Gynaecology</a></h4>
-              <p class="description">A gynecologist is a doctor who specializes in 
+              <p class="description">A gynecologist is a doctor who specializes in
                 female reproductive health. They diagnose and
                 treat issues related to the female reproductive tract.</p>
             </div>
@@ -86,7 +86,7 @@
         <div class="section-title">
           <h2>About Us</h2>
           <p> The material published on the shefaa websit is
-            for information only and should not be considered 
+            for information only and should not be considered
             as a medical advice or a treatment recommendation.
             You should consult a doctor if the symptoms do not disappear</p>
         </div>
@@ -147,7 +147,7 @@
     </section><!-- End Counts Section -->
 
     <!-- ======= Features Section ======= -->
-   
+
     <!-- End Features Section -->
 
 
@@ -353,7 +353,7 @@
 
       </div>
     </section><!-- End Contact Section -->
- 
+
   </main><!-- End #main -->
   @endsection
 @section('js')
@@ -381,10 +381,10 @@
             });
   });
 </script>
-  
+
 @endsection
 
-  
+
 
 
 
