@@ -221,7 +221,7 @@
             <ul class="nav nav-tabs flex-column">
               @foreach ($departments as $count => $department)
               <li class="nav-item">
-                <a @if($count == 0 ) class="nav-link active show" @endif  data-bs-toggle="tab" data-bs-target="#tab-{{ $department->id }}">
+                <a @if($count == 0 ) class="nav-link active show" @else class="nav-link"  @endif  data-bs-toggle="tab" data-bs-target="#tab-{{ $department->id }}">
                   <h4>{{ $department->name }}</h4>
                   <p>{{ $department->desc }}</p>
                 </a>
@@ -261,7 +261,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="{{ $doctor->image }}" class="img-fluid" alt="">
+                <img src="https://drive.google.com/file/d/1tMhCWYVHdH9iYSOoaMNPFvBO3d5I6JiO/view" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>{{ $doctor->name }}</h4>
