@@ -54,8 +54,9 @@ class HomeController extends Controller
                 "category_id" => $request->category_id,
                 "doctor_id" => $request->doctor_id,
                 "message" => $request->message,
+                "date" => $request->date,
             ]);
-            session()->flash('add');
+            toastr()->success('Your reservation has been sent successfully');
             return redirect()->back();
         } catch (\Throwable $e) {
             session()->flash($e->getMessage());
