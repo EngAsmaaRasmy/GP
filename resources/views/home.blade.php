@@ -162,6 +162,7 @@
 
         <form action="{{ route('makeAnAppointment') }}" method="post" autocomplete="off"
         enctype="multipart/form-data" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+        {{ csrf_field() }}
           <div class="row">
             <div class="col-md-4 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -175,9 +176,6 @@
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
-            </div>
-            <div class="col-md-4 form-group mt-3">
               <select name="category_id" id="department" class="form-select">
                 <option value="">Select Department</option>
                 @foreach ($departments as $department)
@@ -189,6 +187,9 @@
               <select name="doctor_id" id="doctor" class="form-select">
                 <option value="">Select Doctor</option>
               </select>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+              <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
             </div>
           </div>
 
@@ -220,7 +221,7 @@
             <ul class="nav nav-tabs flex-column">
               @foreach ($departments as $count => $department)
               <li class="nav-item">
-                <a @if($count == 0 ) class="nav-link active show" @endif  data-bs-toggle="tab" data-bs-target="#tab-{{ $department->id }}">
+                <a @if($count == 0 ) class="nav-link active show" @else class="nav-link"  @endif  data-bs-toggle="tab" data-bs-target="#tab-{{ $department->id }}">
                   <h4>{{ $department->name }}</h4>
                   <p>{{ $department->desc }}</p>
                 </a>
@@ -260,7 +261,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="{{ $doctor->image }}" class="img-fluid" alt="">
+                <img src="https://drive.google.com/file/d/1tMhCWYVHdH9iYSOoaMNPFvBO3d5I6JiO/view" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>{{ $doctor->name }}</h4>

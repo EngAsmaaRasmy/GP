@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Doctor;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 class DoctorSeeder extends Seeder
@@ -56,7 +57,7 @@ class DoctorSeeder extends Seeder
                 'category_id' => 2,
                 'address'  => '',
                 'gender' => 'Male',
-                'image' => 'https://drive.google.com/file/d/1tMhCWYVHdH9iYSOoaMNPFvBO3d5I6JiO/view?usp=sharing',
+                'image' => 'https://drive.google.com/file/d/1tMhCWYVHdH9iYSOoaMNPFvBO3d5I6JiO/view',
                 'password' => Hash::make('123456'),
                 'token' => uniqid(base64_encode(Str::random(40))),
                 'created_at' => Carbon::now(),
