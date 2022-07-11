@@ -16,7 +16,7 @@ class DoctorAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session('doctor_token') !== null) {
+        if (session('token') !== null) {
             return $next($request);
         }
 

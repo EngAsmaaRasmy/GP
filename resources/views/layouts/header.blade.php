@@ -1,11 +1,37 @@
-  <!-- ======= Header ======= -->
+   <!-- ======= Top Bar ======= -->
+   <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="align-items-center d-none d-md-flex">
+        <i class="bi bi-clock"></i> Suterday - Tusday, 09AM to 10PM
+      </div>
+      <div class="d-flex align-items-center">
+          <i class="bi bi-phone"></i> Call us now (092) 7923231
+      </div>
+    </div>
+  </div>
+  
+ <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="{{ route('home') }}" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+      <a href="{{ route('home') }}" class="logo me-auto"><p>SHefaa</p></a>
 
+      @php
+        $doctor = App\Models\Doctor::where('id', session('id'))->first();
+      @endphp
+      @if($doctor)
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li class="dropdown"><a href="#"><span>{{$doctor->name}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Profile</a></li>
+              <li><a href="{{route('doctors.logout')}}">Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      @else
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto " href="#hero">Home</a></li>
@@ -15,9 +41,10 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+      
       <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
-      <a href="" class="appointment-btn scrollto">Doctor?</a>
+      <a href="{{route('doctors.getLogin')}}" class="appointment-btn scrollto">Doctor?</a>
+      @endif
     </div>
   </header>
     <!-- End Header -->

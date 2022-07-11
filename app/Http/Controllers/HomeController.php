@@ -6,6 +6,7 @@ use App\Http\Requests\MakeAnAppointmentRequest;
 use App\Models\Category;
 use App\Models\Doctor;
 use App\Models\Investment;
+use App\Models\Schadule;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,8 +19,9 @@ class HomeController extends Controller
     public function index()
     {
         $departments  = Category::get();
-        $departmentDoctors = Doctor::get();
-        return view('home', compact('departments', 'departmentDoctors'));
+        $departmentDoctors = Doctor::get()->random(4);
+        $doctors = Doctor::get();
+        return view('home', compact('departments', 'departmentDoctors', 'doctors'));
     }
 
     public function fetchDoctors(Request $request)
@@ -27,6 +29,13 @@ class HomeController extends Controller
         $data['doctors']    = Doctor::where('category_id', $request->category_id)->get();
         return response()->json($data);
     }
+
+    public function fetchSchedule(Request $request)
+    {
+        $data['schedule']    = Schadule::where('doctor_id', $request->doctor_id)->first();
+        return response()->json($data);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +63,7 @@ class HomeController extends Controller
                 "category_id" => $request->category_id,
                 "doctor_id" => $request->doctor_id,
                 "message" => $request->message,
-                "date" => $request->date,
+                "appointment_date" => $request->date,
             ]);
             toastr()->success('Your reservation has been sent successfully');
             return redirect()->back();
