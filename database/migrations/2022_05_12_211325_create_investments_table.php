@@ -13,7 +13,7 @@ class CreateInvestmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('investments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email');

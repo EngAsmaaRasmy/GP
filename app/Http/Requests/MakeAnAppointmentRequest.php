@@ -24,10 +24,10 @@ class MakeAnAppointmentRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|string|max:255",
+            "name" => "required",
             "email" => "required",
             "phone" => "required",
-            "date" => "required|date|date_format:Y-m-d",
+            "date" => "required",
             "category_id" => "required",
             "doctor_id" => "required",
         ];

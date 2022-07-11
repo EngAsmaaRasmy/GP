@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Doctor;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 class DoctorSeeder extends Seeder
@@ -18,12 +19,45 @@ class DoctorSeeder extends Seeder
     {
         $doctors = [
             [
+                'name' => 'Ahmed Samir',
+                'email' => 'ahmedsamir12@gmail.com',
+                'category_id' => 1,
+                'address'  => '',
+                'gender' => 'Male',
+                'image' => 'https://drive.google.com/file/d/1HbVcNMMu1BNeWQpHtBpsTJRQkH_Q3Ru9/view?usp=sharing',
+                'password' => Hash::make('123456'),
+                'token' => uniqid(base64_encode(Str::random(40))),
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'Ramy Nashat',
+                'email' => 'ramynashat123@gmail.com',
+                'category_id' => 1,
+                'address'  => '',
+                'gender' => 'Male',
+                'image' => 'https://drive.google.com/file/d/1HmZQ8OrgpKI16FoU2wPyl9HJxw67ivLI/view?usp=sharing',
+                'password' => Hash::make('123456'),
+                'token' => uniqid(base64_encode(Str::random(40))),
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'Mostafa Arafa',
+                'email' => 'mostafa_arafa12@gmail.com',
+                'category_id' => 1,
+                'address'  => '',
+                'gender' => 'Male',
+                'image' => 'https://drive.google.com/file/d/1HmXdKQHx2voDWWGgRi1oOuVZLsgGXha-/view?usp=sharing',
+                'password' => Hash::make('123456'),
+                'token' => uniqid(base64_encode(Str::random(40))),
+                'created_at' => Carbon::now(),
+            ],
+            [
                 'name' => 'Mohamed Ahmed',
                 'email' => 'mohamedahmed12@gmail.com',
                 'category_id' => 2,
                 'address'  => '',
                 'gender' => 'Male',
-                'image' => 'https://drive.google.com/file/d/1tMhCWYVHdH9iYSOoaMNPFvBO3d5I6JiO/view?usp=sharing',
+                'image' => 'https://drive.google.com/file/d/1tMhCWYVHdH9iYSOoaMNPFvBO3d5I6JiO/view',
                 'password' => Hash::make('123456'),
                 'token' => uniqid(base64_encode(Str::random(40))),
                 'created_at' => Carbon::now(),
@@ -79,39 +113,6 @@ class DoctorSeeder extends Seeder
                 'address'  => '',
                 'gender' => 'Male',
                 'image' => 'https://drive.google.com/file/d/1an4X9CtJATKvtJV2dSb9e8u8PGlipcAo/view?usp=sharing',
-                'password' => Hash::make('123456'),
-                'token' => uniqid(base64_encode(Str::random(40))),
-                'created_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Ahmed Samir',
-                'email' => 'ahmedsamir12@gmail.com',
-                'category_id' => 1,
-                'address'  => '',
-                'gender' => 'Male',
-                'image' => 'https://drive.google.com/file/d/1HbVcNMMu1BNeWQpHtBpsTJRQkH_Q3Ru9/view?usp=sharing',
-                'password' => Hash::make('123456'),
-                'token' => uniqid(base64_encode(Str::random(40))),
-                'created_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Ramy Nashat',
-                'email' => 'ramynashat123@gmail.com',
-                'category_id' => 1,
-                'address'  => '',
-                'gender' => 'Male',
-                'image' => 'https://drive.google.com/file/d/1HmZQ8OrgpKI16FoU2wPyl9HJxw67ivLI/view?usp=sharing',
-                'password' => Hash::make('123456'),
-                'token' => uniqid(base64_encode(Str::random(40))),
-                'created_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Mostafa Arafa',
-                'email' => 'mostafa_arafa12@gmail.com',
-                'category_id' => 1,
-                'address'  => '',
-                'gender' => 'Male',
-                'image' => 'https://drive.google.com/file/d/1HmXdKQHx2voDWWGgRi1oOuVZLsgGXha-/view?usp=sharing',
                 'password' => Hash::make('123456'),
                 'token' => uniqid(base64_encode(Str::random(40))),
                 'created_at' => Carbon::now(),

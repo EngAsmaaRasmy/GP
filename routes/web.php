@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,22 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::post("make-an-appointment", [HomeController::class, "store"])->name("makeAnAppointment");
 Route::post('/fetch-doctors', [HomeController::class, 'fetchDoctors']);
+Route::post('/fetch-schedule', [HomeController::class, 'fetchSchedule']);
+
+
+
+//------------------- upload image for doctor ----------------------
+Route::get("edit/{id}", [DoctorController::class, "edit"])->name("edit");
+Route::post("update/{id}", [DoctorController::class, "update"])->name("update");
+
+//------------------- route for doctors ------------------
+Route::group(["prefix" => "/doctors"], function () {
+    Route::get("/login", [DoctorController::class, "getLogin"])->name("doctors.getLogin");
+    Route::post("/login", [DoctorController::class, "login"])->name("doctors.login");
+    Route::group(
+        ['middleware' => ['doctor_auth']],
+        function () {
+            Route::get('/logout', [DoctorController::class, 'logout'])->name('doctors.logout');
+        }
+    );
+});
