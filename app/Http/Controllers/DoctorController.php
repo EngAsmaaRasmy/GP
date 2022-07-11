@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 class DoctorController extends Controller
 {
 use ImageTrait;
-    
+
    /**
      * Display a listing of the resource.
      *
@@ -93,55 +93,26 @@ use ImageTrait;
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit($id)
-    // {
-    //     $doctor = Doctor::find($id);
-    //     if (!$doctor) {
-    //         return redirect()->route("drivers.index");
-    //     } else {
-    //         return  view("doctors.edit", compact("doctor"));
-    //     }
-    // }
-
-    // public function update(Request $request , $id)
-    // {
-    //     try {
-    //         $doctor = Doctor::find($id);
-    //         if ($doctor) {
-    //             if ($request->file("image")) {
-    //                 $image = $this->uploadImage($request->file('image'), "/upload/drivers");
-    //                 $doctor->image  = $image;
-    //             }
-    //             $doctor->save();
-    //             session()->flash('edit');
-    //             return redirect()->back();
-    //         }
-    //     } catch (\Throwable $e) {
-    //         session()->flash($e->getMessage());
-    //         return redirect()->back();
-    //     }
-    // }
-
     public function edit($id)
     {
-        $category = Category::find($id);
-        if (!$category) {
+        $doctor = Doctor::find($id);
+        if (!$doctor) {
             return redirect()->route("drivers.index");
         } else {
-            return  view("doctors.edit", compact("category"));
+            return  view("doctors.edit", compact("doctor"));
         }
     }
 
     public function update(Request $request , $id)
     {
         try {
-            $category = Category::find($id);
-            if ($category) {
+            $doctor = Doctor::find($id);
+            if ($doctor) {
                 if ($request->file("image")) {
-                    $image = $this->uploadImage($request->file('image'), "/upload/categories");
-                    $category->image  = $image;
+                    $image = $this->uploadImage($request->file('image'), "/upload/drivers");
+                    $doctor->image  = $image;
                 }
-                $category->save();
+                $doctor->save();
                 session()->flash('edit');
                 return redirect()->back();
             }
@@ -150,6 +121,35 @@ use ImageTrait;
             return redirect()->back();
         }
     }
+
+    // public function edit($id)
+    // {
+    //     $category = Category::find($id);
+    //     if (!$category) {
+    //         return redirect()->route("drivers.index");
+    //     } else {
+    //         return  view("doctors.edit", compact("category"));
+    //     }
+    // }
+
+    // public function update(Request $request , $id)
+    // {
+    //     try {
+    //         $category = Category::find($id);
+    //         if ($category) {
+    //             if ($request->file("image")) {
+    //                 $image = $this->uploadImage($request->file('image'), "/upload/categories");
+    //                 $category->image  = $image;
+    //             }
+    //             $category->save();
+    //             session()->flash('edit');
+    //             return redirect()->back();
+    //         }
+    //     } catch (\Throwable $e) {
+    //         session()->flash($e->getMessage());
+    //         return redirect()->back();
+    //     }
+    // }
     public function updateProfile(Request $request, $id)
     {
         $doctor = Doctor::find($id);
