@@ -19,9 +19,8 @@ class HomeController extends Controller
     public function index()
     {
         $departments  = Category::get();
-        $departmentDoctors = Doctor::get()->random(4);
         $doctors = Doctor::get();
-        return view('home', compact('departments', 'departmentDoctors', 'doctors'));
+        return view('home', compact('departments', 'doctors'));
     }
 
     public function fetchDoctors(Request $request)
@@ -68,7 +67,7 @@ class HomeController extends Controller
             toastr()->success('Your reservation has been sent successfully');
             return redirect()->back();
         } catch (\Throwable $e) {
-            session()->flash($e->getMessage());
+            toastr()->error('Something error');
             return redirect()->back();
         }
     }

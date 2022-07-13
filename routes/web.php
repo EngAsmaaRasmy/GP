@@ -31,6 +31,7 @@ Route::post("update/{id}", [DoctorController::class, "update"])->name("update");
 Route::group(["prefix" => "/doctors"], function () {
     Route::get("/login", [DoctorController::class, "getLogin"])->name("doctors.getLogin");
     Route::post("/login", [DoctorController::class, "login"])->name("doctors.login");
+    Route::post("/register", [DoctorController::class, "store"])->name("doctors.register");
     Route::group(
         ['middleware' => ['doctor_auth']],
         function () {

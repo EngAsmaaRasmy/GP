@@ -13,6 +13,8 @@
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+
+    <link href="{{URL::asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/doctor/style.css')}}" rel="stylesheet">
 
     <!-- Fontawesome CDN Link -->
@@ -62,19 +64,38 @@
       </div>
         <div class="signup-form">
           <div class="title">Signup</div>
-        <form action="#">
+        <form action="{{ route('doctors.register') }}" method="post" enctype="multipart/form-data">
+          {{ csrf_field() }}
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required>
+                <input type="text" placeholder="Enter your name" name="name" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <input type="text" placeholder="Enter your email" name="email" required>
+              </div>
+              <div class="mb-2">
+                <p for="gender">Gender</p>
+                <input type="radio" name="gender" value="Female"> Female
+                <input type="radio" name="gender" value="Male"> Male
+              </div>
+              <p for="gender">Department</p>
+              <div class="mb-3">
+                <select name="category_id" id="department" class="form-select" required>
+                  <option value="">Select Department</option>
+                  @foreach ($departments as $department)
+                  <option value="{{ $department->id }}">{{ $department->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="">
+              <p for="gender">Image</p>
+                <input type="file" name="image" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" placeholder="Enter your password" name="password" required>
               </div>
               <div class="button input-box">
                 <input type="submit" value="Sumbit">
@@ -86,4 +107,9 @@
     </div>
     </div>
   </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+<script src="{{URL::asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
 </body>

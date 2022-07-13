@@ -22,7 +22,8 @@ use ImageTrait;
      */
     public function getLogin()
     {
-        return  view("doctors.login");
+        $departments = Category::get();
+        return  view("doctors.login", compact('departments'));
     }
 
     /**
@@ -48,27 +49,28 @@ use ImageTrait;
             'name' => 'required',
             'email' => 'required|email|unique:doctors,email',
             'category_id' => 'required',
-            'address' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required',
+            'gender' => 'required',
+            'password' => 'required|min:6',
         ]);
         $doctor =     Doctor::create($input);
         $token = uniqid(base64_encode(Str::random(40)));
         $doctor->token = $token;
         $doctor->password = Hash::make($request->password);
         $doctor->save();
+        $departments = Category::get();
+        $reservations = Investment::where('doctor_id', $doctor->id)->get(); 
         toastr()->success('New account as Doctor created successfully');
         $session = session(['token' => $doctor->token, 'id' => $doctor->id]);
-        return redirect()->route('doctor.show.profile')->with('doctor', $doctor);
+        return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
     }
 
     public function login(Request $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');
-        $doctor = Doctor::where('email', $email)->first();
+        $doctor = Doctor::where('email', $email)->first(); // id= 1
         $departments = Category::get();
-        $reservations = Investment::where('doctor_id', $doctor->id)->get();
+        $reservations = Investment::where('doctor_id', $doctor->id)->get(); //doctor-id = 1
         if ($doctor) {
             if (Hash::check($password, $doctor->password)) {
                 $token = uniqid(base64_encode(Str::random(40)));

@@ -18,7 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->string("name");
             $table->string('email')->unique();
             $table->integer("category_id");
-            $table->string("address");
+            $table->string("address")->nullable();
             $table->enum("gender", ["male", "female"]);
             $table->string('image');
             $table->string('password');

@@ -185,6 +185,11 @@ body{
   color: #253373;
   cursor: pointer;
 }
+.forms .form-content p{
+  color: #253373;
+  font-size: 16px;
+  font-weight: 600;
+}
 .forms .form-content label:hover{
   text-decoration: underline;
 }
