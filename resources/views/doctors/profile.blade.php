@@ -43,6 +43,25 @@
             </select>
           </div>
         </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <select name="week_day" id="department" class="form-select" >
+                    <option value="Saturday ">Saturday </option>
+                    <option value="Sunday ">Sunday </option>
+                    <option value="Monday  ">Monday  </option>
+                    <option value="Tuesday ">Tuesday </option>
+                    <option value="Wednesday ">Wednesday  </option>
+                    <option value="Thursday ">Thursday  </option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group ">
+                    <input type="time" class="form-control" name="from">
+            </div>
+
+            <div class="col-md-4 form-group ">
+                    <input type="time" class="form-control" name="to">
+            </div>
+        </div>
         <div class="text-center mt-3">
           <button type="submit">Update Profile</button>
         </div>

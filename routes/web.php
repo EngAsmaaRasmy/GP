@@ -36,6 +36,7 @@ Route::group(["prefix" => "/doctors"], function () {
     Route::group(
         ['middleware' => ['doctor_auth']],
         function () {
+            Route::get('/', [DoctorController::class, 'dashboard'])->name('dashboard');
             Route::get('/logout', [DoctorController::class, 'logout'])->name('doctors.logout');
             Route::get("/profile/{id}", [DoctorController::class, "editProfile"])->name("doctors.editProfile");
             Route::post("/profile/{id}", [DoctorController::class, "updateProfile"])->name("doctors.updateProfile");

@@ -17,8 +17,7 @@
 
 <section id="faq" class="faq section-bg inner-page">
     <div class="container" data-aos="fade-up">
-
-
+        @isset($reservations)   
         <ul class="faq-list">
             @foreach($reservations as $reservation)
             <li>
@@ -42,6 +41,8 @@
             @endforeach
 
         </ul>
+        @endisset
+        <h2>No reservations .....</h2>
 
     </div>
 </section>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Category;
 use App\Models\Investment;
+use App\Models\Schadule;
 use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -31,9 +32,13 @@ use ImageTrait;
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function dashboard()
     {
-        //
+        $doctor = Doctor::where('id', session('id'))->first();
+        $departments = Category::get();
+        $reservations = Investment::where('doctor_id', $doctor->id)->get(); 
+        return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
+
     }
 
     /**
@@ -165,23 +170,33 @@ use ImageTrait;
     }
     public function updateProfile(Request $request, $id)
     {
-        $doctor = Doctor::find($id);
-        $departments = Category::get();
-        $reservations = Investment::where('doctor_id', $doctor->id)->get();
-        $input = $request->all();
-        $request->validate([
+        try {
+            $doctor = Doctor::find($id);
+            $departments = Category::get();
+            $reservations = Investment::where('doctor_id', $doctor->id)->get();
+            $input = $request->all();
+            $request->validate([
             'name' => 'required',
             'email' => 'required',
             'category_id' => 'required',
-        ]);
-        $doctor->update($input);
-        if ($request->file("image")) {
-            $image = $this->uploadImage($request->file('image'), "/upload/drivers");
-            $doctor->image  = $image;
+            ]);
+            $doctor->update($input);
+            if ($request->file("image")) {
+                $image = $this->uploadImage($request->file('image'), "/upload/drivers");
+                $doctor->image  = $image;
+            }
+            $doctor->save();
+            $schedule = new Schadule();
+            $schedule->doctor_id = $request->doctor_id;
+            $schedule->week_day = $request->week_day;
+            $schedule->time = $request->from + '-' + $request->to ;
+            $request->save();
+            toastr()->success('update profile successfully');
+            return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
+        } catch (\Throwable $e) {
+            toastr()->error('Something error');
+            return redirect()->back();
         }
-        $doctor->save();
-        toastr()->success('update profile successfully');
-        return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
     }
 
     /**
