@@ -255,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #3fbbc0;
+  color: #161e44;
 }
 .navbar .dropdown:hover > ul {
   opacity: 1;
@@ -989,13 +989,13 @@ section {
 .faq .faq-list .question {
   display: block;
   position: relative;
-  font-family: #3fbbc0;
+  font-family: #161e44;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
   padding-left: 25px;
   cursor: pointer;
-  color: #32969a;
+  color: #161e44;
   transition: 0.3s;
 }
 .faq .faq-list i {
@@ -1015,7 +1015,7 @@ section {
   color: black;
 }
 .faq .faq-list .collapsed:hover {
-  color: #3fbbc0;
+  color: #161e44;
 }
 .faq .faq-list .collapsed .icon-show {
   display: inline-block;
@@ -1181,7 +1181,7 @@ section {
   transition: 0.3s;
 }
 #footer .footer-top .social-links a:hover {
-  background: #65c9cd;
+  background: #161e44;
   text-decoration: none;
 }
 #footer .footer-top h4 {
@@ -1219,7 +1219,7 @@ section {
   line-height: 1;
 }
 #footer .footer-top .footer-links ul a:hover {
-  color: #3fbbc0;
+  color: #161e44;
 }
 #footer .footer-top .footer-newsletter form {
   margin-top: 30px;
@@ -1243,13 +1243,13 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #3fbbc0;
+  background: #161e44;
   color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
 }
 #footer .footer-top .footer-newsletter form input[type=submit]:hover {
-  background: #65c9cd;
+  background: #161e44;
 }
 #footer .copyright {
   text-align: center;

@@ -50,12 +50,17 @@ use ImageTrait;
             'email' => 'required|email|unique:doctors,email',
             'category_id' => 'required',
             'gender' => 'required',
+            'image'=> 'required',
             'password' => 'required|min:6',
         ]);
         $doctor =     Doctor::create($input);
         $token = uniqid(base64_encode(Str::random(40)));
         $doctor->token = $token;
         $doctor->password = Hash::make($request->password);
+        if ($request->file("image")) {
+            $image = $this->uploadImage($request->file('image'), "/upload/drivers");
+            $doctor->image  = $image;
+        }
         $doctor->save();
         $departments = Category::get();
         $reservations = Investment::where('doctor_id', $doctor->id)->get(); 
@@ -152,19 +157,31 @@ use ImageTrait;
     //         return redirect()->back();
     //     }
     // }
+    public function editProfile($id)
+    {
+        $doctor = Doctor::find($id);
+        $departments = Category::get();
+        return view('doctors.profile', compact('doctor', 'departments'));
+    }
     public function updateProfile(Request $request, $id)
     {
         $doctor = Doctor::find($id);
+        $departments = Category::get();
+        $reservations = Investment::where('doctor_id', $doctor->id)->get();
         $input = $request->all();
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:doctors,email',
+            'email' => 'required',
             'category_id' => 'required',
-            'address' => 'required',
         ]);
         $doctor->update($input);
+        if ($request->file("image")) {
+            $image = $this->uploadImage($request->file('image'), "/upload/drivers");
+            $doctor->image  = $image;
+        }
+        $doctor->save();
         toastr()->success('update profile successfully');
-        return redirect()->route('doctor.main')->with('doctor', $doctor);
+        return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
     }
 
     /**

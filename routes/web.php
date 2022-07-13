@@ -32,10 +32,13 @@ Route::group(["prefix" => "/doctors"], function () {
     Route::get("/login", [DoctorController::class, "getLogin"])->name("doctors.getLogin");
     Route::post("/login", [DoctorController::class, "login"])->name("doctors.login");
     Route::post("/register", [DoctorController::class, "store"])->name("doctors.register");
+    
     Route::group(
         ['middleware' => ['doctor_auth']],
         function () {
             Route::get('/logout', [DoctorController::class, 'logout'])->name('doctors.logout');
+            Route::get("/profile/{id}", [DoctorController::class, "editProfile"])->name("doctors.editProfile");
+            Route::post("/profile/{id}", [DoctorController::class, "updateProfile"])->name("doctors.updateProfile");
         }
     );
 });

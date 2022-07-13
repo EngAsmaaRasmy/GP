@@ -24,7 +24,7 @@
         <ul>
           <li class="dropdown"><a href="#"><span>{{$doctor->name}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Profile</a></li>
+              <li><a href="{{route('doctors.editProfile', $doctor->id)}}">Profile</a></li>
               <li><a href="{{route('doctors.logout')}}">Log Out</a></li>
             </ul>
           </li>
