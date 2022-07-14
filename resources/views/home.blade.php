@@ -18,9 +18,9 @@
           <p class="description">
                The heart is an organ about the size of your fist that pumps blood through your body.
               It is made up of multiple layers of tissue.
-              Your heart is at the center of your circulatory system. 
+              Your heart is at the center of your circulatory system.
               This system is a network of blood vessels, such as arteries,
-              veins, and capillaries, that carries blood to and from all areas of your body. 
+              veins, and capillaries, that carries blood to and from all areas of your body.
               Your blood carries the oxygen and nutrients that your organs need to work properly.
           </p>
         </div>
@@ -32,7 +32,7 @@
           <h4 class="title"><a href="#">Internal Medicine</a></h4>
           <p class="description">The specialty of internal medicine covers a wide range
             of conditions affecting the internal organs of the body - the heart, the lungs
-            , the liver and gastro-intestinal tract, the kidneys and urinary tract, 
+            , the liver and gastro-intestinal tract, the kidneys and urinary tract,
             the brain, spinal column, nerves, muscles and joints.</p>
         </div>
       </div>
@@ -42,13 +42,13 @@
           <div class="icon"><i class="fas fa-thermometer"></i></div>
           <h4 class="title"><a href="#">Pediatrics</a></h4>
           <p class="description">Pediatrics
-            is the branch of medicine dealing 
+            is the branch of medicine dealing
             with the health and medical care of
-            infants, children, and adolescents from 
+            infants, children, and adolescents from
             birth up to the age of 18. The word “paediatrics”
             means “healer of children”; they are derived from
-            two Greek words: (pais = child) and (iatros = doctor 
-            or healer). Paediatrics is a relatively new medical 
+            two Greek words: (pais = child) and (iatros = doctor
+            or healer). Paediatrics is a relatively new medical
             specialty, developing only in the mid-19th century.
             </p>
         </div>
@@ -60,7 +60,7 @@
           <h4 class="title"><a href="#">Gynaecology</a></h4>
           <p class="description">
               A gynecologist is a doctor who specializes
-              in female reproductive health. They diagnose 
+              in female reproductive health. They diagnose
               and treat issues related to the female reproductive
               tract. This includes the uterus, fallopian tubes, and ovaries and breasts.
               Anyone with female organs may see a gynecologist.  80% of those who see one are between 15 to 45 years old.
@@ -106,9 +106,7 @@
         <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3>keep your healthy.</h3>
           <p class="fst-italic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua.
+            There are somethings you should do to keep your healthy :
           </p>
           <ul class="col-lg-6">
 
@@ -271,8 +269,8 @@
   </section><!-- End Departments Section -->
 
 
-  <!-- ======= Doctors Section ======= -->
-  <section id="doctors" class="doctors section-bg">
+   <!-- ======= Doctors Section ======= -->
+   <section id="doctors" class="doctors section-bg">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
@@ -284,7 +282,7 @@
           <div class="swiper-slide">
             <div class="doctors-item member" data-aos="fade-up" data-aos-delay="400">
               <div class="member-img">
-                <img src="{{asset("$doctor->image")}}" class="img-fluid" style="height:60% !important"  alt="">
+                <img src="{{asset("$doctor->image")}}" class="img-fluid"  alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -315,9 +313,7 @@
 
       <div class="section-title">
         <h2>Contact</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
+
       </div>
 
     </div>
