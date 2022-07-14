@@ -9,7 +9,7 @@ class Investment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "email", "phone", "appointment_date", "category_id", "doctor_id", "message"];
+    protected $fillable = ["name", "email", "phone", "appointment_date", "category_id", "doctor_id", "message", "done"];
 
     public function doctor()
     {

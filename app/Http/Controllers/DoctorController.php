@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Investment;
 use App\Models\Schadule;
 use App\Traits\ImageTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -36,9 +37,8 @@ use ImageTrait;
     {
         $doctor = Doctor::where('id', session('id'))->first();
         $departments = Category::get();
-        $reservations = Investment::where('doctor_id', $doctor->id)->get(); 
+        $reservations = Investment::where('doctor_id', $doctor->id)->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])->get(); 
         return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
-
     }
 
     /**
@@ -67,20 +67,16 @@ use ImageTrait;
             $doctor->image  = $image;
         }
         $doctor->save();
-        $departments = Category::get();
-        $reservations = Investment::where('doctor_id', $doctor->id)->get(); 
         toastr()->success('New account as Doctor created successfully');
         $session = session(['token' => $doctor->token, 'id' => $doctor->id]);
-        return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
+        return redirect()->route('dashboard');
     }
 
     public function login(Request $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');
-        $doctor = Doctor::where('email', $email)->first(); // id= 1
-        $departments = Category::get();
-        $reservations = Investment::where('doctor_id', $doctor->id)->get(); //doctor-id = 1
+        $doctor = Doctor::where('email', $email)->first();
         if ($doctor) {
             if (Hash::check($password, $doctor->password)) {
                 $token = uniqid(base64_encode(Str::random(40)));
@@ -88,7 +84,7 @@ use ImageTrait;
                 $doctor->save();
                 $session = session(['token' => $doctor->token, 'id' => $doctor->id]);
                 toastr()->success('You are logged in successfully');
-                return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
+                return redirect()->route('dashboard');
             } else {
                 toastr()->warning('The password is incorrect');
                 return redirect()->back();
@@ -166,39 +162,67 @@ use ImageTrait;
     {
         $doctor = Doctor::find($id);
         $departments = Category::get();
-        return view('doctors.profile', compact('doctor', 'departments'));
+        $schedules = Schadule::where('doctor_id', $id)->get();
+        return view('doctors.profile', compact('doctor', 'departments', 'schedules'));
     }
+
     public function updateProfile(Request $request, $id)
     {
         try {
             $doctor = Doctor::find($id);
-            $departments = Category::get();
-            $reservations = Investment::where('doctor_id', $doctor->id)->get();
             $input = $request->all();
+
             $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'category_id' => 'required',
+                'name' => 'required',
+                'email' => 'required',
+                'category_id' => 'required',
             ]);
+
             $doctor->update($input);
+            //------ save image for doctor
             if ($request->file("image")) {
                 $image = $this->uploadImage($request->file('image'), "/upload/drivers");
                 $doctor->image  = $image;
             }
             $doctor->save();
-            $schedule = new Schadule();
-            $schedule->doctor_id = $request->doctor_id;
-            $schedule->week_day = $request->week_day;
-            $schedule->time = $request->from + '-' + $request->to ;
-            $request->save();
+            if($request->filled('from') && $request->filled('to')) {
+                //----convert to one digit  from request-----
+                $from = substr($request->from, 0, -3);
+                $to = substr($request->to, 0, -3);
+                $time = $from . '-' . $to;
+                
+                //---new schadule for doctor
+                $schedule = new Schadule();
+                $schedule->doctor_id = $doctor->id;
+                $schedule->week_day = $request->week_day;
+                $schedule->time = $time;
+                $schedule->save();
+            } 
             toastr()->success('update profile successfully');
-            return view('doctors.dashboard', compact('doctor', 'departments', 'reservations'));
+            return redirect()->route('dashboard');
         } catch (\Throwable $e) {
             toastr()->error('Something error');
             return redirect()->back();
         }
     }
-
+    //-------- delete schedule------------
+    public function deleteSchedule($id)
+    {
+        try {
+            $schedule = Schadule::find($id);
+            if ($schedule) {
+                $schedule->delete();
+                toastr()->success('This date has been successfully deleted');
+                return redirect()->back();
+            } else {
+                toastr()->error('This item does not exist');
+                return redirect()->back();
+            }
+        } catch (\Throwable $e) {
+            toastr()->error('Something error');
+            return redirect()->back();
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

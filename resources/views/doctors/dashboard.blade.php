@@ -21,8 +21,13 @@
         <ul class="faq-list">
             @foreach($reservations as $reservation)
             <li>
-                <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{$reservation->id}}">{{$reservation->appointment_date}} <i
-                        class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div data-bs-toggle="collapse" class="collapsed question row" href="#faq{{$reservation->id}}">
+                    <div class="col-md-6">
+                        {{$reservation->appointment_date}} 
+                        <i class="bi bi-chevron-down icon-show"></i>
+                        <i class="bi bi-chevron-up icon-close"></i>
+                    </div>
+                    </div>
                 <div id="faq{{$reservation->id}}" class="collapse" data-bs-parent=".faq-list">
                     <p>
                         Name: {{$reservation->name}}
@@ -41,8 +46,9 @@
             @endforeach
 
         </ul>
-        @endisset
+        @else
         <h2>No reservations .....</h2>
+        @endisset
 
     </div>
 </section>

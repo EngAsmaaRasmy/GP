@@ -6,56 +6,85 @@
 
 <main id="main">
 
-  <!-- ======= Featured Services Section ======= -->
-  <section id="featured-services" class="featured-services">
-    <div class="container" data-aos="fade-up">
+<!-- ======= Featured Services Section ======= -->
+<section id="featured-services" class="featured-services">
+  <div class="container" data-aos="fade-up">
 
-      <div class="row">
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="fas fa-heartbeat"></i></div>
-            <h4 class="title"><a href="#">Heart </a></h4>
-            <p class="description">The heart is a fist-sized organ
-              that pumps blood throughout your body. It's the primary
-              organ of your circulatory system. Your heart contains four
-              main sections .</p>
-          </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon"><i class="fas fa-heartbeat"></i></div>
+          <h4 class="title"><a href="#">Heart </a></h4>
+          <p class="description">
+               The heart is an organ about the size of your fist that pumps blood through your body.
+              It is made up of multiple layers of tissue.
+              Your heart is at the center of your circulatory system. 
+              This system is a network of blood vessels, such as arteries,
+              veins, and capillaries, that carries blood to and from all areas of your body. 
+              Your blood carries the oxygen and nutrients that your organs need to work properly.
+          </p>
         </div>
+      </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="fas fa-pills"></i></div>
-            <h4 class="title"><a href="#">Internal Medicine</a></h4>
-            <p class="description">Internal diseases (Internal Medicine) the department
-              that diagnoses and treats the problems
-              in the internal organs of patients over the age of 15</p>
-          </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="fas fa-pills"></i></div>
+          <h4 class="title"><a href="#">Internal Medicine</a></h4>
+          <p class="description">The specialty of internal medicine covers a wide range
+            of conditions affecting the internal organs of the body - the heart, the lungs
+            , the liver and gastro-intestinal tract, the kidneys and urinary tract, 
+            the brain, spinal column, nerves, muscles and joints.</p>
         </div>
+      </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="fas fa-thermometer"></i></div>
-            <h4 class="title"><a href="#">Pediatrics</a></h4>
-            <p class="description">Pediatrics is the branch of medicine dealing with the
-              health and medical care of infants, children,
-              and adolescents from birth up to the age of 18</p>
-          </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon"><i class="fas fa-thermometer"></i></div>
+          <h4 class="title"><a href="#">Pediatrics</a></h4>
+          <p class="description">Pediatrics
+            is the branch of medicine dealing 
+            with the health and medical care of
+            infants, children, and adolescents from 
+            birth up to the age of 18. The word “paediatrics”
+            means “healer of children”; they are derived from
+            two Greek words: (pais = child) and (iatros = doctor 
+            or healer). Paediatrics is a relatively new medical 
+            specialty, developing only in the mid-19th century.
+            </p>
         </div>
+      </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="fas fa-dna"></i></div>
-            <h4 class="title"><a href="#">Gynaecology</a></h4>
-            <p class="description">A gynecologist is a doctor who specializes in
-              female reproductive health. They diagnose and
-              treat issues related to the female reproductive tract.</p>
-          </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon"><i class="fas fa-dna"></i></div>
+          <h4 class="title"><a href="#">Gynaecology</a></h4>
+          <p class="description">
+              A gynecologist is a doctor who specializes
+              in female reproductive health. They diagnose 
+              and treat issues related to the female reproductive
+              tract. This includes the uterus, fallopian tubes, and ovaries and breasts.
+              Anyone with female organs may see a gynecologist.  80% of those who see one are between 15 to 45 years old.
+          </p>
         </div>
-
       </div>
 
     </div>
-  </section><!-- End Featured Services Section -->
+
+  </div>
+</section><!-- End Featured Services Section -->
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="text-center">
+      <h3>In an emergency? Need help now?</h3>
+      <p> Call us on (092) 7923231 or call for help in situations that are emergencies, so as to be open to the real emergency. Seek medical help, especially in cases of ingestion of toxins..</p>
+      <a class="cta-btn scrollto" href="#appointment">Make an Make an Appointment</a>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
 
 
   <!-- ======= About Us Section ======= -->
@@ -148,9 +177,6 @@
 
       <div class="section-title">
         <h2>Make an Appointment</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
       </div>
 
       <form action="{{ route('makeAnAppointment') }}" method="post" autocomplete="off" enctype="multipart/form-data"
@@ -181,9 +207,10 @@
               <option value="">Select Doctor</option>
             </select>
           </div>
-          <div class="col-md-4 form-group mt-3" id="schedule">
-            <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date"
-              required>
+          <div class="col-md-4 form-group mt-3">
+            <select name="date" id="schedule" class="form-select">
+              <option value="">Select Day</option>
+            </select>
           </div>
         </div>
 
@@ -209,9 +236,6 @@
 
       <div class="section-title">
         <h2>Departments</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -253,9 +277,6 @@
 
       <div class="section-title">
         <h2>Doctors</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
       </div>
       <div class=" testimonials-slider swiper " data-aos="fade-up" data-aos-delay="100">
         <div class="swiper-wrapper">
@@ -276,7 +297,6 @@
                 <span>
                   {{$doctor->category->name}}
                 </span>
-                <span> {{$doctor->schaduale->week_day}} {{$doctor->schaduale->time}}</span>
               </div>
             </div>
           </div>
@@ -375,24 +395,26 @@
                 });
             });
 
-            // $('#doctor').on('change', function () {
-            //     var doctor = this.value;
-            //     $("#schedule").html('');
-            //     $.ajax({
-            //         url: "{{url('/fetch-schedule')}}",
-            //         type: "POST",
-            //         data: {
-            //             doctor_id: doctor,
-            //             _token: '{{csrf_token()}}'
-            //         },
-            //         dataType: 'json',
-            //         success: function (result) {
-            //             $.each(result.schedule, function (key, value) {
-            //                 $("#schedule").append('<p >'+ value.name + value.name+'</p>');
-            //             });
-            //         }
-            //     });
-            // });
+            $('#doctor').on('change', function () {
+                var doctor = this.value;
+                $("#schedule").html('');
+                $.ajax({
+                    url: "{{url('/fetch-schedule')}}",
+                    type: "POST",
+                    data: {
+                        doctor_id: doctor,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                      $('#schedule').html('<option value="">Select Day</option>');
+                        $.each(result.schedule, function (key, value) {
+                            $("#schedule").append('<option value="' + value
+                                .week_day + '">' + value.week_day + '</option>');
+                        });
+                    }
+                });
+            });
   });
 </script>
 

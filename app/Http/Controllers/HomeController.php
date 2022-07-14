@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     public function fetchSchedule(Request $request)
     {
-        $data['schedule']    = Schadule::where('doctor_id', $request->doctor_id)->first();
+        $data['schedule']    = Schadule::where('doctor_id', $request->doctor_id)->get();
         return response()->json($data);
     }
 

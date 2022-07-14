@@ -18,7 +18,7 @@ class CreateInvestmentsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->date('appointment_date');
+            $table->string('appointment_date');
             $table->integer("category_id");
             $table->integer("doctor_id");
             $table->text("message")->nullable();
