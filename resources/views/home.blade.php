@@ -193,7 +193,7 @@
         </div>
         <div class="row">
           <div class="col-md-4 form-group mt-3">
-            <select name="category_id" id="department" class="form-select">
+            <select name="category_id" id="department" class="form-select" required>
               <option value="">Select Department</option>
               @foreach ($departments as $department)
               <option value="{{ $department->id }}">{{ $department->name }}</option>
@@ -201,12 +201,12 @@
             </select>
           </div>
           <div class="col-md-4 form-group mt-3">
-            <select name="doctor_id" id="doctor" class="form-select">
+            <select name="doctor_id" id="doctor" class="form-select" required>
               <option value="">Select Doctor</option>
             </select>
           </div>
           <div class="col-md-4 form-group mt-3">
-            <select name="date" id="schedule" class="form-select">
+            <select name="date" id="schedule" class="form-select" required>
               <option value="">Select Day</option>
             </select>
           </div>
